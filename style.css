@@ -1,0 +1,501 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/*=============== CSS VARIABLES ===============*/
+:root {
+    /* Colors */
+    --primary-color: #4B8DF8;
+    --secondary-color: #34C759;
+    --accent-color: #f5a623;
+    
+    /* Light Mode Palette */
+    --title-color: #2D3748; /* Darker gray for text */
+    --text-color: #4A5568; /* Softer gray for paragraphs */
+    --body-color: #F8FAFC; /* Light gray background */
+    --container-color: #FFFFFF; /* White for cards/surfaces */
+    --border-color: #E2E8F0;
+
+    /* Font and Typography */
+    --body-font: 'Poppins', sans-serif;
+    --h1-font-size: 2.5rem;
+    --h2-font-size: 2rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    
+    /* Spacing & Radius */
+    --header-height: 4.5rem;
+    --border-radius: 0.75rem;
+}
+
+/*=============== DARK MODE VARIABLES ===============*/
+body.dark-mode {
+    --title-color: #F7FAFC; /* Light gray for titles */
+    --text-color: #A0AEC0; /* Lighter gray for paragraphs */
+    --body-color: #1A202C; /* Very dark blue/gray */
+    --container-color: #2D3748; /* Darker container background */
+    --border-color: #4A5568;
+}
+
+/*=============== BASE & RESET ===============*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: background-color 0.4s, color 0.4s;
+}
+
+h1, h2, h3, h4 {
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+}
+
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.section {
+    padding: 6rem 0 2rem;
+}
+
+.section__title {
+    font-size: var(--h2-font-size);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section__description {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+}
+
+.button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.button--primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.button--secondary {
+    background-color: var(--container-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+    width: 100%;
+    background-color: var(--container-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.4s;
+}
+
+.nav {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    color: var(--title-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav__list {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav__link {
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav__link:hover {
+    color: var(--primary-color);
+}
+
+.nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav__dark-mode, .nav__toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--title-color);
+}
+
+.nav__toggle {
+    display: none; /* Hidden on desktop */
+}
+
+
+/*=============== HERO SECTION ===============*/
+.hero__container {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.hero__title {
+    font-size: var(--h1-font-size);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero__description {
+    margin-bottom: 2rem;
+}
+
+.hero__buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero__image img {
+    border-radius: var(--border-radius);
+}
+
+/*=============== SERVICES SECTION ===============*/
+.services__container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.service-card {
+    background-color: var(--container-color);
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+}
+
+.service-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.service-card__title {
+    font-size: var(--h3-font-size);
+    margin-bottom: 0.5rem;
+}
+
+/*=============== PORTFOLIO SECTION ===============*/
+.portfolio__container {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.portfolio-card {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.portfolio-card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 2rem 1.5rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.4s;
+}
+
+.portfolio-card:hover .portfolio-card__overlay {
+    transform: translateY(0);
+}
+
+.portfolio-card__title {
+    color: white;
+    font-size: var(--h3-font-size);
+}
+
+/*=============== TESTIMONIALS SECTION ===============*/
+.testimonials__container {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+.testimonial-card {
+    background-color: var(--container-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 5px solid var(--secondary-color);
+}
+
+.testimonial-card__quote {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-card__author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.testimonial-card__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.testimonial-card__name {
+    font-size: var(--normal-font-size);
+}
+.testimonial-card__role {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+/* Slider navigation styles (JS will control functionality) */
+.testimonials__navigation {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+.testimonials__nav-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    margin: 0 0.5rem;
+}
+
+/*=============== CONTACT SECTION ===============*/
+.contact__container {
+    grid-template-columns: 1fr 1.5fr;
+    align-items: center;
+}
+.contact__title {
+    font-size: var(--h3-font-size);
+    margin-bottom: 0.5rem;
+}
+.contact__description {
+    margin-bottom: 2rem;
+}
+.form__group {
+    margin-bottom: 1.5rem;
+}
+.form__label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--title-color);
+}
+.form__input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--body-color);
+    color: var(--title-color);
+    font-family: var(--body-font);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form__input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(75, 141, 248, 0.3);
+}
+
+/*=============== FOOTER ===============*/
+.footer {
+    background-color: var(--container-color);
+    padding: 4rem 0 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer__container {
+    text-align: center;
+}
+.footer__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--title-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.footer__description {
+    margin-bottom: 2rem;
+}
+
+.footer__socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.footer__social-link {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.footer__social-link:hover {
+    color: var(--primary-color);
+}
+
+.footer__copy {
+    font-size: 0.9rem;
+}
+
+/*=============== SCROLL UP BUTTON ===============*/
+.scroll-up {
+    position: fixed;
+    right: 1.5rem;
+    bottom: -30%; /* Hidden by default */
+    background-color: var(--primary-color);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    z-index: 50;
+    transition: bottom 0.4s, transform 0.3s;
+}
+
+.scroll-up:hover {
+    transform: translateY(-4px);
+}
+
+/* Show scroll-up button */
+.show-scroll {
+    bottom: 3rem;
+}
+
+/*=============== SCROLL ANIMATIONS ===============*/
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/*=============== RESPONSIVE DESIGN (BREAKPOINTS) ===============*/
+
+/* For large devices (laptops, desktops) */
+@media screen and (max-width: 992px) {
+    .container {
+        padding: 0 1rem;
+    }
+    .hero__container, .contact__container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    .hero__image {
+        grid-row: 1; /* Pindahkan gambar ke atas di mode tablet */
+        margin-bottom: 1rem;
+    }
+    .hero__buttons {
+        justify-content: center;
+    }
+}
+
+/* For medium devices (tablets) */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 0.95rem;
+    }
+    .section {
+        padding: 4rem 0 1rem;
+    }
+    .nav__list {
+        display: none; /* Disembunyikan, akan dikontrol JS */
+    }
+    .nav__toggle {
+        display: block; /* Tampilkan hamburger menu */
+    }
+    :root {
+        --h1-font-size: 2rem;
+        --h2-font-size: 1.5rem;
+    }
+}
+
+/* For small devices (phones) */
+@media screen and (max-width: 480px) {
+    .button {
+        padding: 0.8rem 1.5rem;
+    }
+    .services__container, .portfolio__container {
+        grid-template-columns: 1fr;
+    }
+    .contact__container {
+        text-align: left;
+    }
+}
